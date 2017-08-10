@@ -1,1 +1,19 @@
-<%=@flight.origin%>
+<%@flight.each do |f|%>
+
+  Origen: <%=f.origin%>
+  <br>
+  Destino: <%=f.destiny%>
+  <br>
+  Total de asientos: <%=f.total_seats%>
+  <p>Fecha</p>
+  Año: <%=f.time.year%>
+  <br>
+  Mes: <%= f.time.strftime('%B')%>
+  <br>
+  Dia: <%=f.time.day%>
+  <br>
+  Hora: <%=f.time.hour%>
+  <br>
+  Minutos: <%=f.time.min%>
+
+<%end%>
