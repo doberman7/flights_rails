@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  seats: 1
+  destiny: MyString
+  origin: MyString
+  date: 2017-08-09
+  time: 2017-08-09 17:55:30
+  cost: 9.99
+
+two:
+  seats: 1
+  destiny: MyString
+  origin: MyString
+  date: 2017-08-09
+  time: 2017-08-09 17:55:30
+  cost: 9.99
