@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
-
-  get 'user_bookings/index'
-
-  get 'bookings/index'
-
-  get 'users/index'
-
+  post "/" => 'flights#show'
   root 'flights#index'
 
   resources :flights do

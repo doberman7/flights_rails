@@ -3,7 +3,15 @@ class FlightsController < ApplicationController
     @fligths = Flight.all
   end
   def show
-    @flight = Flight.find(params[:id])
+    p "-" * 50
+    origen = params[:flow][:flight_origin]
+    destino = params[:flow][:flight_destiny]
+    p Flight.where(origin: origen, destiny: destino)
+    p "-" * 50
+    render 'index'
+
+
+    #@flight = Flight.find(params[:id])
   end
   def new
     @flight = Flight.new
