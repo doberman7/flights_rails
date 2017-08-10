@@ -1,0 +1,5 @@
+<p>compra boletos</p>
+
+<%=form_for 'show' do |f|%>
+  <%=select("post", "flight_id", Flight.all.collect {|f| [ f.destiny, f.origin ] }, {include_blank: 'None'})%>
+<%end%>
