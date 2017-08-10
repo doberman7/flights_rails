@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 20170809225530) do
 
   create_table "bookings", force: :cascade do |t|
-    t.decimal  "total",      precision: 2, scale: 12
+    t.decimal  "total_cost", precision: 2, scale: 12
     t.integer  "flight_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
@@ -21,14 +21,13 @@ ActiveRecord::Schema.define(version: 20170809225530) do
   end
 
   create_table "flights", force: :cascade do |t|
-    t.integer  "seats"
+    t.integer  "total_seats"
     t.string   "destiny"
     t.string   "origin"
-    t.date     "date"
     t.time     "time"
-    t.decimal  "cost",       precision: 2, scale: 12
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.decimal  "cost",        precision: 2, scale: 12
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   create_table "user_bookings", force: :cascade do |t|
