@@ -1,4 +1,4 @@
-require 'date'
+#require 'date'
 
 #FORMAT TIME:     gm(year, month, day, hour, min) → time
 hawai = Flight.create!(total_seats: 20, destiny: "Hawai", origin: "CDMX",  depart: Time.new(2012,"feb",2,10,13 ) , cost: 120.09)

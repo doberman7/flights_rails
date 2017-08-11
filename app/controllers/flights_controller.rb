@@ -16,21 +16,21 @@ class FlightsController < ApplicationController
     if @flights.empty?
       @no_vuelos = "Reinicia la busqueda"
     else
-      p "-" * 50
+      #p "-" * 50
       flights.delete_if do |flight|
-        p año_selected.to_i != flight.depart.year
-        p mes_selected.to_i != flight.depart.month
-        p dia_selected.to_i != flight.depart.day
+         año_selected.to_i != flight.depart.year
+         mes_selected.to_i != flight.depart.month
+         dia_selected.to_i != flight.depart.day
         #p "Año seleccionado #{año_selected.to_i} en igual a Año de vuelo #{ flight.depart.year}: #{año_selected.to_i == flight.depart.year}"
       end
-      p @flights = flights
+       @flights = flights
       # p "HAY #{@flights.count} vuelos que coinsiden"
       # p "DESTINO #{@flights.first.destiny} "
       # p "ORIGEN #{@flights.first.origin} "
-      p "-" * 50
+      # "-" * 50
     end
   end
-  def create_user
+  def user_create
     @user = User.new
   end
 
