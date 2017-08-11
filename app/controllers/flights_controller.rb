@@ -8,7 +8,7 @@ class FlightsController < ApplicationController
     @flights = Flight.where(origin: origen, destiny: destino)
 
     if @flights.empty?
-      @no_vuelos = "No registros"      
+      @no_vuelos = "Reinicia la busqueda"      
     else
       p "HAY #{@flights.count} vuelos que coinsiden"
       p "DESTINO #{@flights.first.destiny} "

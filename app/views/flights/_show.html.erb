@@ -1,27 +1,31 @@
 <div class="modal-dialog">
   <div class="modal-content">
-      <p>Resultados</p>
+      Hay <%=@flights.count%> Vuelos con esas caraterízticas
+      <br>
       <%if @no_vuelos %>
           <%= @no_vuelos %>
       <%end %>
       <%if @flights %>
+        <br>
+        <%= "Origen: #{@flights[0].origin}"  if @flights.empty? == false%>
+        <br>
+        <%= "Destino: #{@flights[0].destiny}" if @flights.empty? == false%>
+        <br>
         <%@flights.each do |f|%>
-          Origen: <%=f.origin%>
           <br>
-          Destino: <%=f.destiny%>
+          Id del vuelo: <%=f.id%>
           <br>
           Total de asientos: <%=f.total_seats%>
-          <p>Fecha</p>
-          Año: <%=f.time.year%>
           <br>
-          Mes: <%= f.time.strftime('%B')%>
-          <br>
-          Dia: <%=f.time.day%>
-          <br>
-          Hora: <%=f.time.hour%>
-          <br>
-          Minutos: <%=f.time.min%>
+          Fecha de salida:
+          <%=f.time.day%>/
+          <!-- formato de tiempo para el mes es convertido de numero a palabra -->
+           <%= f.time.strftime('%B')%>/
+           <%=f.time.year%>
 
+          <br>
+          Hora de salida: <%=f.time.hour%>:<%=f.time.min%>
+          <br>
         <%end%>
       <%end%>
  </div>
