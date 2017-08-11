@@ -1,11 +1,10 @@
 <p>compra boletos</p>
 
-<%=form_for forma_path, remote: true  do |f|%>
-  <p>Origen</p>
-  <%=select("flow", "flight_origin", Flight.all.collect {|f| [ f.origin ] }, {include_blank: 'None'})%>
-  <p>detino</p>
-  <%=select("flow", "flight_destiny", Flight.all.collect {|f| [ f.destiny ] }, {include_blank: 'None'})%>
-  <br>
-  <%= f.submit "Buscar"%>
-<%end%>
-<%= render "show" %>
+      <%=form_for forma_path, remote: true, html: { style: "display:inline;" }  do |f|%>
+        <p>Origen</p>
+        <%=select("flow", "flight_origin", Flight.all.collect {|f| [ f.origin ] }, {include_blank: 'None'})%>
+        <p>detino</p>
+        <%=select("flow", "flight_destiny", Flight.all.collect {|f| [ f.destiny ] }, {include_blank: 'None'})%>
+        <br>
+        <%= f.submit "Buscar"%>
+      <%end%>
