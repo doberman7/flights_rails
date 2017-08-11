@@ -5,14 +5,28 @@ class FlightsController < ApplicationController
   def show
     origen = params[:flow][:flight_origin]
     destino = params[:flow][:flight_destiny]
-    @flights = Flight.where(origin: origen, destiny: destino)
+    año_selected = params[:calendar]["date(1i)"]
+    mes_selected = params[:calendar]["date(2i)"]
+    dia_selected = params[:calendar]["date(3i)"]
+    flights = []
+    @flights = Flight.where(origin: origen, destiny: destino).each do |flight|
+      flights << flight
+    end
 
     if @flights.empty?
       @no_vuelos = "Reinicia la busqueda"
     else
-      p "HAY #{@flights.count} vuelos que coinsiden"
-      p "DESTINO #{@flights.first.destiny} "
-      p "ORIGEN #{@flights.first.origin} "
+      p "-" * 50
+      flights.delete_if do |flight|
+        p año_selected.to_i != flight.depart.year
+        p mes_selected.to_i != flight.depart.month
+        p dia_selected.to_i != flight.depart.day
+        #p "Año seleccionado #{año_selected.to_i} en igual a Año de vuelo #{ flight.depart.year}: #{año_selected.to_i == flight.depart.year}"
+      end
+      p @flights = flights
+      # p "HAY #{@flights.count} vuelos que coinsiden"
+      # p "DESTINO #{@flights.first.destiny} "
+      # p "ORIGEN #{@flights.first.origin} "
       p "-" * 50
     end
   end
@@ -56,6 +70,6 @@ class FlightsController < ApplicationController
 
   private
     def flight_params
-      params.require(:flight).permit(:total_seats, :destiny, :origin, :time, :cost)
+      params.require(:flight).permit(:total_seats, :destiny, :origin, :depart, :cost)
     end
 end

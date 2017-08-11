@@ -18,13 +18,13 @@
           Total de asientos: <%=f.total_seats%>
           <br>
           Fecha de salida:
-          <%=f.time.day%>/
+          <%=f.depart.day%>/
           <!-- formato de tiempo para el mes es convertido de numero a palabra -->
-           <%= f.time.strftime('%B')%>/
-           <%=f.time.year%>
+           <%= f.depart.strftime('%B')%>/
+           <%=f.depart.year%>
 
           <br>
-          Hora de salida: <%=f.time.hour%>:<%=f.time.min%>
+          Hora de salida: <%=f.depart.hour%>:<%=f.depart.min%>
           <br>
           Costo <%= f.cost%>
           <br>

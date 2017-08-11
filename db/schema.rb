@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20170809225530) do
     t.integer  "total_seats"
     t.string   "destiny"
     t.string   "origin"
-    t.time     "time"
+    t.datetime "depart"
     t.decimal  "cost",        precision: 2, scale: 12
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false

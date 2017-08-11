@@ -2,22 +2,26 @@
       <!-- formulario para la ruta  post "/"  que usa el metodo 'flights#show' con el alias 'forma'  -->
       <!-- remote true se encaraga de render show.js y _show.html-->
       <%=form_for forma_path, remote: true  do |f|%>
-      <%@flights_origins = []%>
-      <%@flights_destinys = []%>
-      <%@fligths.collect do |f|%>
-          <%@flights_origins << f.origin %>
-          <%@flights_destinys << f.destiny %>
-      <%end%>
-      <%@flights_origins.uniq!%>
-      <%@flights_destinys.uniq!%>
-      <br>
-        <p>Origen</p>
-          <!-- menu dropdown, donde el parametro seleccionaro se llama 'flow' y dentro esta el hash "flight_origin"-->
-          <!-- recolectamos todos los vuelos y la opcion seleccionada es el param "flight_origin" -->
-          <%=select("flow", "flight_origin", @flights_origins.collect {|origen|  origen  }, {include_blank: 'None'})%>
-
-        <p>Detino</p>
-          <%=select("flow", "flight_destiny", @flights_destinys.collect {|destino| destino }, {include_blank: 'None'})%>
+        <%@flights_origins = []%>
+        <%@flights_destinys = []%>
+        <%@fligths.collect do |f|%>
+            <%@flights_origins << f.origin %>
+            <%@flights_destinys << f.destiny %>
+        <%end%>
+        <%@flights_origins.uniq!%>
+        <%@flights_destinys.uniq!%>
         <br>
-        <%= f.submit "Buscar"%>
+          Origen
+            <!-- menu dropdown, donde el parametro seleccionaro se llama 'flow' y dentro esta el hash "flight_origin"-->
+            <!-- recolectamos todos los vuelos y la opcion seleccionada es el param "flight_origin" -->
+            <%=select(:flow, "flight_origin", @flights_origins.collect {|origen|  origen  }, {include_blank: 'None'})%>
+          <br>
+          Detino
+            <%=select(:flow, "flight_destiny", @flights_destinys.collect {|destino| destino }, {include_blank: 'None'})%>
+          <br>
+          Fecha
+          <br>
+          <%=date_select(:calendar, :date)%>
+          <br>
+          <%= f.submit "Buscar"%>
       <%end%>
