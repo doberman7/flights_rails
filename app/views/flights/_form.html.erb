@@ -1,6 +1,6 @@
 <p>compra boletos</p>
-<%=@flights.class%>
-<%=form_for flights_path do |f|%>
+
+<%=form_for forma_path, remote: true  do |f|%>
   <p>Origen</p>
   <%=select("flow", "flight_origin", Flight.all.collect {|f| [ f.origin ] }, {include_blank: 'None'})%>
   <p>detino</p>
@@ -8,3 +8,4 @@
   <br>
   <%= f.submit "Buscar"%>
 <%end%>
+<%= render "show" %>

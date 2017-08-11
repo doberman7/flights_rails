@@ -3,10 +3,14 @@ class FlightsController < ApplicationController
     @fligths = Flight.all
   end
   def show
+    @fligths = Flight.all
     p "-" * 50
     origen = params[:flow][:flight_origin]
     destino = params[:flow][:flight_destiny]
     @flight = Flight.where(origin: origen, destiny: destino)
+    p "HAY #{@flight.count} vuelos que coinsiden"
+    p "DESTINO #{@flight.first.destiny} "
+    p "ORIGEN #{@flight.first.origin} "
     p "-" * 50
     #render 'index'
     #@flight = Flight.find(params[:id])
@@ -19,7 +23,11 @@ class FlightsController < ApplicationController
   # end
   # def create
   #   @flights = Flight.all
-  #   @flight = Flight.create(flight_params)
+  #   origen = params[:flow][:flight_origin]
+  #   destino = params[:flow][:flight_destiny]
+  #   p "-" * 50
+  #   p @flight = Flight.where(origin: origen, destiny: destino)
+  #   p "-" * 50
   # end
   # def edit
   #   @flight = Flight.find(params[:id])
