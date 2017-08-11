@@ -26,8 +26,12 @@
           <br>
           Hora de salida: <%=f.time.hour%>:<%=f.time.min%>
           <br>
+          Costo <%= f.cost%>
+          <br>
+          <%= link_to "Seleccionar", user_create_path,:method => :post, remote: true ,class: "btn btn-primary" %>
+          <br>
         <%end%>
       <%end%>
  </div>
+ <%= link_to "Reiniciar busqueda", '#', class: "btn btn-danger" %>
 </div>
-<%= link_to "Index", '/', class: "btn btn-primary" %>

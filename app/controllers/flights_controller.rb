@@ -8,16 +8,16 @@ class FlightsController < ApplicationController
     @flights = Flight.where(origin: origen, destiny: destino)
 
     if @flights.empty?
-      @no_vuelos = "Reinicia la busqueda"      
+      @no_vuelos = "Reinicia la busqueda"
     else
       p "HAY #{@flights.count} vuelos que coinsiden"
       p "DESTINO #{@flights.first.destiny} "
       p "ORIGEN #{@flights.first.origin} "
       p "-" * 50
     end
-
-
-
+  end
+  def create_user
+    @user = User.new
   end
 
 
