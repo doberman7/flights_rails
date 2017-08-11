@@ -2,7 +2,8 @@
 
   <h1>Vuelos Rails</h1>
   <div class="flight-index">
-        <%= render "form" %>
+        <!-- renderear formulario parcial, y pasarle el local con los vuelos-->
+        <%= render "form", :fligths => @fligths %>
   </div>
 </div>
 <div id="flight-modal" class="modal fade"></div>

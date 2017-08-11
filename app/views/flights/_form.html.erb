@@ -1,10 +1,13 @@
 <p>compra boletos</p>
-
-      <%=form_for forma_path, remote: true, html: { style: "display:inline;" }  do |f|%>
+      <!-- formulario para la ruta  post "/"  que usa el metodo 'flights#show' con el alias 'forma'  -->
+      <!-- remote true se encaraga de render show.js y _show.html-->
+      <%=form_for forma_path, remote: true  do |f|%>
         <p>Origen</p>
-        <%=select("flow", "flight_origin", Flight.all.collect {|f| [ f.origin ] }, {include_blank: 'None'})%>
-        <p>detino</p>
-        <%=select("flow", "flight_destiny", Flight.all.collect {|f| [ f.destiny ] }, {include_blank: 'None'})%>
+          <!-- menu dropdown, donde el parametro seleccionaro se llama 'flow' y dentro esta el hash "flight_origin"-->
+          <!-- recolectamos todos los vuelos y la opcion seleccionada es el param "flight_origin" -->
+          <%=select("flow", "flight_origin", @fligths.collect {|f| [ f.origin ] }, {include_blank: 'None'})%>
+        <p>Detino</p>
+          <%=select("flow", "flight_destiny", @fligths.collect {|f| [ f.destiny ] }, {include_blank: 'None'})%>
         <br>
         <%= f.submit "Buscar"%>
       <%end%>

@@ -12,8 +12,7 @@ class FlightsController < ApplicationController
     p "DESTINO #{@flight.first.destiny} "
     p "ORIGEN #{@flight.first.origin} "
     p "-" * 50
-    #render 'index'
-    #@flight = Flight.find(params[:id])
+    
   end
 
 
