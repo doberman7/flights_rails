@@ -2,9 +2,12 @@ require 'date'
 
 #FORMAT TIME:     gm(year, month, day, hour, min) → time
 hawai = Flight.create!(total_seats: 20, destiny: "Hawai", origin: "CDMX",  time: Time.gm(2000,"jan",1,20,15) , cost: 120.09)
+Flight.create!(total_seats: 20, destiny: "Hawai", origin: "CDMX",  time: Time.gm(2000,"jan",1,15,15) , cost: 120.09)
 moscu = Flight.create!(total_seats: 20, destiny: "Moscu", origin: "CD Juarez",  time: Time.gm(2000,"jan",2,20,15) , cost: 120.09)
 baghdad = Flight.create!(total_seats: 40, destiny: "Siberia", origin: "Toluca",  time: Time.gm(2000,"jan",1,14,15) , cost: 120.09)
 siberia = Flight.create!(total_seats: 40, destiny: "Baghdad", origin: "Acapulco",  time: Time.gm(2000,"jan",2,14,15) , cost: 120.09)
+
+
 
 paco = User.create!(name: "Paco", admin: true, email: "uno@hotmail.com")
 poncho = User.create!(name: "Poncho", admin: false, email: "dos@hotmail.com")

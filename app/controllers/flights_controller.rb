@@ -3,16 +3,21 @@ class FlightsController < ApplicationController
     @fligths = Flight.all
   end
   def show
-    @fligths = Flight.all
-    p "-" * 50
     origen = params[:flow][:flight_origin]
     destino = params[:flow][:flight_destiny]
-    @flight = Flight.where(origin: origen, destiny: destino)
-    p "HAY #{@flight.count} vuelos que coinsiden"
-    p "DESTINO #{@flight.first.destiny} "
-    p "ORIGEN #{@flight.first.origin} "
-    p "-" * 50
-    
+    @flights = Flight.where(origin: origen, destiny: destino)
+
+    if @flights.empty?
+      @no_vuelos = "No registros"      
+    else
+      p "HAY #{@flights.count} vuelos que coinsiden"
+      p "DESTINO #{@flights.first.destiny} "
+      p "ORIGEN #{@flights.first.origin} "
+      p "-" * 50
+    end
+
+
+
   end
 
 

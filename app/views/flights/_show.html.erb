@@ -1,8 +1,11 @@
 <div class="modal-dialog">
   <div class="modal-content">
       <p>Resultados</p>
-      <%if @flight %>
-        <%@flight.each do |f|%>
+      <%if @no_vuelos %>
+          <%= @no_vuelos %>
+      <%end %>
+      <%if @flights %>
+        <%@flights.each do |f|%>
           Origen: <%=f.origin%>
           <br>
           Destino: <%=f.destiny%>
