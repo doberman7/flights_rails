@@ -4,10 +4,12 @@
       <%=form_for forma_path, remote: true  do |f|%>
         <%@flights_origins = []%>
         <%@flights_destinys = []%>
+        <!-- recolectar destinos y origenes de vuelos -->
         <%@fligths.collect do |f|%>
             <%@flights_origins << f.origin %>
             <%@flights_destinys << f.destiny %>
         <%end%>
+        <!-- eliminar origenes y destinos repetidos -->
         <%@flights_origins.uniq!%>
         <%@flights_destinys.uniq!%>
         <br>

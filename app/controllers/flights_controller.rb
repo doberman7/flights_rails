@@ -31,7 +31,11 @@ class FlightsController < ApplicationController
     end
   end
   def user_create
-    @user = User.new
+    p "." * 50
+    @flight_id = params[:flight_id]
+    p @flight_id
+    p "." * 50
+
   end
 
 
