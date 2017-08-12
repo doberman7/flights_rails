@@ -2,8 +2,30 @@
   <div class="modal-content">
     <!--  form_for @product, remote: true, html: { style: "display:inline;" } do |f|  -->
     <h1>Modal</h1>
-    <%=@flight_id%>
-    
+
+
+    <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Costo</th>
+            <td>&nbsp;Destiny</td>
+            <td>&nbsp;Origin</td>
+            <td>&nbsp;Depart</td>
+            <td>&nbsp;Hour</td>
+          </tr>
+        </thead>
+        <tbody >
+            <td><%=@flight_seleceted.id%></td>
+            <td><%=@flight_seleceted.cost%></td>
+            <td><%=@flight_seleceted.destiny%></td>
+            <td><%=@flight_seleceted.origin%></td>
+            <td><%="#{@flight_seleceted.depart.day} of #{@flight_seleceted.depart.strftime('%B')} of #{@flight_seleceted.depart.year}"%></td>
+            <td><%="#{@flight_seleceted.depart.hour}:#{@flight_seleceted.depart.min}"%></td>
+
+        </tbody>
+    </table>
+
       <div class="modal-body">
         <ul class="errors"></ul>
         <p>error</p>
