@@ -3,7 +3,7 @@ class CreateFlights < ActiveRecord::Migration[5.0]
     create_table :flights do |t|
       t.integer :total_seats
       t.string :destiny
-      t.string :origin      
+      t.string :origin
       t.datetime :depart
       t.decimal :cost, precision: 2, scale: 12
 

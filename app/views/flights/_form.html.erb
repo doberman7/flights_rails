@@ -18,7 +18,7 @@
             <!-- recolectamos todos los vuelos y la opcion seleccionada es el param "flight_origin" -->
             <%=select(:flow, "flight_origin", @flights_origins.collect {|origen|  origen  }, {include_blank: 'None'})%>
           <br>
-          Detino
+          Destino
             <%=select(:flow, "flight_destiny", @flights_destinys.collect {|destino| destino }, {include_blank: 'None'})%>
           <br>
           Fecha
