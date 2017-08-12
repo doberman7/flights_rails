@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   #resources :flights
 
   post "/" => 'flights#show' , as: 'forma'
-  post "/user/create", to: 'flights#user_create' , as: 'user_create'
+  post "/user/select_fly", to: 'flights#select_fly' , as: 'select_fly'
   root 'flights#index'
   post "/user/new", to: 'flights#user_new' , as: 'users'
 

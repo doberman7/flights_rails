@@ -29,7 +29,7 @@
           Costo <%= f.cost%>
           <br>
           <!-- linck dice "Seleccionar", action es la ruta "/user/create" con el params "flight_selected"=>"f.id" ,  -->
-          <%= link_to "Seleccionar", user_create_path(:flight_id => f),:method => :post, remote: true , class: "btn btn-primary" %>
+          <%= link_to "Seleccionar", select_fly_path(:flight_id => f),:method => :post, remote: true , class: "btn btn-primary" %>
           <br>
         <%end%>
       <%end%>
