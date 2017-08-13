@@ -14,7 +14,7 @@
         <%@flights_destinys.uniq!%>
         <br>
           Origen
-            <!-- menu dropdown, donde el parametro seleccionaro se llama 'flow' y dentro esta el hash "flight_origin"-->
+            <!-- menu dropdown, donde el parametro seleccionado se llama 'flow' y dentro esta el hash "flight_origin"-->
             <!-- recolectamos todos los vuelos y la opcion seleccionada es el param "flight_origin" -->
             <%=select(:flow, "flight_origin", @flights_origins.collect {|origen|  origen  }, {include_blank: 'None'})%>
           <br>

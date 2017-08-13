@@ -1,6 +1,8 @@
 <div class="modal-content">
   <%= render "flight_selected"%>
-  <%= @flight_seleceted%>
+  <% @flight_seats = Array.new(@flight_seleceted.total_seats) %>
+  <%=select(:seats , "seats_selected", @flight_seats.each_with_index {|v,i| @flight_seats[i] = i + 1}, {include_blank: 'None'})%>
+  
   <p>forma User new</p>
   <%=form_for @user, remote: true, html: { style: "display:inline;" } do |f|  %>
     <div class="modal-body">
