@@ -45,6 +45,11 @@ class FlightsController < ApplicationController
     p "-" * 50
   end
 
+  def pasengers
+    p "|" * 50
+    p params
+    p "|" * 50
+  end
 
   # def create
   #   @flights = Flight.all
