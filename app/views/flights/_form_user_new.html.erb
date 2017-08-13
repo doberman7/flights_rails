@@ -1,12 +1,11 @@
+
 <div class="modal-content">
   <p>forma User new</p>
   <%= render "flight_selected"%>
   <% @flight_seats = Array.new(@flight_seleceted.total_seats) %>
-  <%=form_tag('/pasengers') %>
+
+  <%=form_tag('/passengers') %>
     <%=select(:seats , "seats_selected", @flight_seats.each_with_index {|v,i| @flight_seats[i] = i + 1}, {include_blank: 'None'})%>
   <%=submit_tag %>
-
-  <%= render "sub_form_user_new", :user => @user %>
-
 
 </div>

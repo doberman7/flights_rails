@@ -34,21 +34,23 @@ class FlightsController < ApplicationController
     p "." * 50
     p "SELECT FLY"
     p @flight_seleceted = Flight.find_by(id: params[:flight_id])
-    p @user = User.new
     p params
     p "." * 50
   end
   def user_new
     p "-" * 50
-    p "USER"
+    p "USER NEW"
+
     p params
     p "-" * 50
   end
 
-  def pasengers
-    p "|" * 50
-    p params
-    p "|" * 50
+  def passengers
+    p "°" * 50
+    p "PAssENGERS"
+    @users = Array.new(params[:seats][:seats_selected].to_i)
+    p @users.each_index {|i| @users[i] = User.new}
+    p "°" * 50
   end
 
   # def create

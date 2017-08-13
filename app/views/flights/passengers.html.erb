@@ -1,0 +1,24 @@
+<p>pasengers</p>
+<%@users.each do|user| %>
+    <%@user = user  %>
+    <%=form_for @user, remote: true, html: { style: "display:inline;" } do |f|  %>
+      <div class="modal-body">
+        <ul class="errors"></ul>
+
+        <div class="form-group">
+          <%=  f.label :name, class:"control-label" %>
+           <%=f.text_field :name, class: "form-control"  %>
+
+        </div>
+        <div class="form-group">
+          <%=  f.label :email, class: "control-label"%>
+          <%= f.text_field :email, class: "form-control" %>
+        </div>
+      </div>
+      <div class="modal-footer">
+
+        <%= f.submit "Crear user",class: "btn btn-primary"%>
+        <%=link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"} %>
+      </div>
+    <% end %>
+<%end %>
