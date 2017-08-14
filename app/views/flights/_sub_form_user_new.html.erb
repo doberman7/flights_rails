@@ -1,6 +1,5 @@
-<p>sub form</p>
-
-<%=form_for @user, remote: true, html: { style: "display:inline;" } do |f|  %>
+<p>en sub form</p>
+<%=form_for user_new_path , remote: true do |f|  %>
   <div class="modal-body">
     <ul class="errors"></ul>
 
@@ -17,6 +16,6 @@
   <div class="modal-footer">
 
     <%= f.submit "Crear user",class: "btn btn-primary"%>
-    <%=link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"} %>
+    <%=link_to "Return to seleccion", "#", class: "btn", data: {dismiss: "modal"} %>
   </div>
 <% end %>

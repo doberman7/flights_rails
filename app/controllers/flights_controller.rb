@@ -35,14 +35,18 @@ class FlightsController < ApplicationController
     p "." * 50
     p "SELECT FLY"
     p params
-     @flight_seleceted = Flight.find_by(id: params[:flight_id])    
+     @flight_seleceted = Flight.find_by(id: params[:flight_id])
     p "." * 50
   end
   def user_new
     p "-" * 50
     p "USER NEW"
     p params
+    p @user = User.new
     p "-" * 50
+  end
+  def user_add
+
   end
 
   def passengers
