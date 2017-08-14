@@ -15,7 +15,7 @@ class FlightsController < ApplicationController
     @flights = Flight.where(origin: origen, destiny: destino, total_seats: (seats_selected..40)).each do |flight|
        flights << flight
     end
-    p @flights
+
     if @flights.empty?
       @no_vuelos = "Reinicia la busqueda"
     else
@@ -27,15 +27,15 @@ class FlightsController < ApplicationController
         #p "Año seleccionado #{año_selected.to_i} en igual a Año de vuelo #{ flight.depart.year}: #{año_selected.to_i == flight.depart.year}"
       end
        @flights = flights
-
+       @seats_selected = seats_selected
     end
     p "´" * 50
   end
   def select_fly
     p "." * 50
     p "SELECT FLY"
-    p @flight_seleceted = Flight.find_by(id: params[:flight_id])
     p params
+     @flight_seleceted = Flight.find_by(id: params[:flight_id])    
     p "." * 50
   end
   def user_new
@@ -50,8 +50,6 @@ class FlightsController < ApplicationController
     p "PAssENGERS"
     p params
     @user = User.new
-    @users = Array.new(params[:seats][:seats_selected].to_i)
-    @users.each_index {|i| @users[i] = User.new}
     p "°" * 50
   end
 
