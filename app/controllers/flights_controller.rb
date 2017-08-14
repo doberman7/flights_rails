@@ -42,12 +42,20 @@ class FlightsController < ApplicationController
     p "-" * 50
     p "USER NEW"
     p params
-    p @user = User.new
+
     p "-" * 50
   end
   def user_add
-
+    p "USER_ADD"
+    @user = User.new
   end
+
+ def user_create
+   p"-" * 50
+   p "USER_CREATE"
+   p params
+   p"-" * 50
+ end
 
   def passengers
     p "°" * 50
