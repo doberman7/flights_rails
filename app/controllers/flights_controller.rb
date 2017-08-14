@@ -40,7 +40,6 @@ class FlightsController < ApplicationController
   def user_new
     p "-" * 50
     p "USER NEW"
-
     p params
     p "-" * 50
   end
@@ -48,8 +47,9 @@ class FlightsController < ApplicationController
   def passengers
     p "°" * 50
     p "PAssENGERS"
+    @user = User.new
     @users = Array.new(params[:seats][:seats_selected].to_i)
-    p @users.each_index {|i| @users[i] = User.new}
+    @users.each_index {|i| @users[i] = User.new}
     p "°" * 50
   end
 

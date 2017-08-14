@@ -3,9 +3,9 @@
   <p>forma User new</p>
   <%= render "flight_selected"%>
   <% @flight_seats = Array.new(@flight_seleceted.total_seats) %>
-
+  <p>Select seats, the dropdown show the number of seats available</p>
   <%=form_tag('/passengers') %>
     <%=select(:seats , "seats_selected", @flight_seats.each_with_index {|v,i| @flight_seats[i] = i + 1}, {include_blank: 'None'})%>
-  <%=submit_tag %>
+  <%=submit_tag "Save passengers Data" %>
 
 </div>
