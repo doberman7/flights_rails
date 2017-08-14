@@ -1,23 +1,24 @@
 <p>pasengers</p>
 
-<%@users.each_with_index do|user, index| %>
-    <%@user = user  %>
-    <%=form_for @user, remote: true do |f|  %>
+
+    <%=form_for @user, url: {action: "user_new"}, remote: true do |f|  %>
+    <%@users.each_with_index do|user, index| %>
+    <%index = index + 1  %>
       <div class="modal-body">
         <ul class="errors"></ul>
 
         <div class="form-group">
-          <%=  f.label :name, class:"control-label" %>
-           <%=f.text_field :name, class: "form-control"  %>
+          <%=  f.label :name, class:"control-label"%>
+           <%=f.text_field :name, class: "form-control", id: "name-passenger-#{index}"%>
 
         </div>
           <%=  f.label :email, class: "control-label"%>
           <div class="form-group">
-          <%= f.text_field :email, class: "form-control" %>
-        </div>
+          <%= f.text_field :email, class: "form-control", id: "email-passenger-#{index}"%>
       </div>
-      <div class="modal-footer">
-          <%= f.submit "Create user",class: "btn btn-primary", id: index %>
-      </div>
+    </div>
     <% end %>
+      <div class="modal-footer">
+          <%= f.submit "Create users",class: "btn btn-primary" %>
+      </div>
 <%end %>

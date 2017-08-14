@@ -47,6 +47,7 @@ class FlightsController < ApplicationController
   def passengers
     p "°" * 50
     p "PAssENGERS"
+    p params
     @user = User.new
     @users = Array.new(params[:seats][:seats_selected].to_i)
     @users.each_index {|i| @users[i] = User.new}

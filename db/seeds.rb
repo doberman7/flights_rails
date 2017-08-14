@@ -1,9 +1,9 @@
 #require 'date'
 
 #FORMAT TIME:     gm(year, month, day, hour, min) → time
-hawai = Flight.create!(total_seats: 20, destiny: "Hawai", origin: "CDMX",  depart: Time.gm(2017,"sep",2,10,13 ) , cost: 120.09)
-        Flight.create!(total_seats: 20, destiny: "Hawai", origin: "CDMX",  depart: Time.gm(2017,"sep",2,22,30 ) , cost: 180.09)
-        Flight.create!(total_seats: 10, destiny: "Hawai", origin: "CDMX",  depart: Time.gm(2017,"oct",2,22,40 ), cost: 120.09)
+hawai = Flight.create!(total_seats: 20, destiny: "Hawai", origin: "CDMX",  depart: Time.gm(2017,"sep",14,13,13 ) , cost: 120.09)
+        Flight.create!(total_seats: 20, destiny: "Hawai", origin: "CDMX",  depart: Time.gm(2017,"sep",14,12,30 ) , cost: 180.09)
+        Flight.create!(total_seats: 10, destiny: "Hawai", origin: "CDMX",  depart: Time.gm(2017,"sep",14,11,40 ), cost: 120.09)
 moscu = Flight.create!(total_seats: 20, destiny: "Moscu", origin: "CD Juarez",  depart: Time.gm(2017,"oct",2,15,15) , cost: 120.09)
         Flight.create!(total_seats: 10, destiny: "Moscu", origin: "CD Juarez",  depart: Time.gm(2017,"sep",2,12,15) , cost: 120.09)
 baghdad = Flight.create!(total_seats: 40, destiny: "Siberia", origin: "Toluca",  depart: Time.gm(2017,"dec",2,14,15) , cost: 120.09)
