@@ -4,14 +4,17 @@
       <%=form_for forma_path, remote: true  do |f|%>
         <%@flights_origins = []%>
         <%@flights_destinys = []%>
+        <%@flights_total_seats = []%>
         <!-- recolectar destinos y origenes de vuelos -->
         <%@fligths.collect do |f|%>
             <%@flights_origins << f.origin %>
             <%@flights_destinys << f.destiny %>
+            <%@flights_total_seats << f.total_seats %>
         <%end%>
         <!-- eliminar origenes y destinos repetidos -->
         <%@flights_origins.uniq!%>
         <%@flights_destinys.uniq!%>
+        <%@flights_total_seats.uniq!%>
         <br>
           Origen
             <!-- menu dropdown, donde el parametro seleccionado se llama 'flow' y dentro esta el hash "flight_origin"-->
@@ -24,6 +27,14 @@
           Fecha
           <br>
           <%=date_select(:calendar, :date)%>
+          <br>
+            <%all_seats = @flights_total_seats.sort.last%>
+            <%@flights_total_seats = []%>
+            <%for seat in 1..all_seats%>
+              <%@flights_total_seats << seat%>
+            <%end%>
+            Select seats
+            <%=select(:flow , "seats_selected", @flights_total_seats.each_with_index {|v| v}, {include_blank: 'None'})%>
           <br>
           <%= f.submit "Buscar"%>
       <%end%>

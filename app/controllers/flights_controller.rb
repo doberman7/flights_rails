@@ -2,17 +2,20 @@ class FlightsController < ApplicationController
   def index
     @fligths = Flight.all
   end
+
   def show
+    p "´" * 50
     origen = params[:flow][:flight_origin]
     destino = params[:flow][:flight_destiny]
     año_selected = params[:calendar]["date(1i)"]
     mes_selected = params[:calendar]["date(2i)"]
     dia_selected = params[:calendar]["date(3i)"]
+    seats_selected = params[:flow][:seats_selected].to_i
     flights = []
-    @flights = Flight.where(origin: origen, destiny: destino).each do |flight|
-      flights << flight
+    @flights = Flight.where(origin: origen, destiny: destino, total_seats: (seats_selected..40)).each do |flight|
+       flights << flight
     end
-
+    p @flights
     if @flights.empty?
       @no_vuelos = "Reinicia la busqueda"
     else
@@ -24,11 +27,9 @@ class FlightsController < ApplicationController
         #p "Año seleccionado #{año_selected.to_i} en igual a Año de vuelo #{ flight.depart.year}: #{año_selected.to_i == flight.depart.year}"
       end
        @flights = flights
-      # p "HAY #{@flights.count} vuelos que coinsiden"
-      # p "DESTINO #{@flights.first.destiny} "
-      # p "ORIGEN #{@flights.first.origin} "
-      # "-" * 50
+
     end
+    p "´" * 50
   end
   def select_fly
     p "." * 50
