@@ -5,7 +5,11 @@ function modal() {
   if ($seats > 1) {
     //console.log("IF TRUE");
     $seats = $seats - 1
-    $("#por-asingar").html("<p>Quedan por  agregar: "+ $seats +" usarios </p>")
+    if ($seats == 1) {
+      $("#por-asingar").html("<p>Quedan por  agregar: "+ $seats +" usuario </p>")
+    }else {
+      $("#por-asingar").html("<p>Quedan por  agregar: "+ $seats +" usarios </p>")
+    };
     $seats = $("#seats").html($seats);
     $("#new_user")[0].reset();
     alert("Objetos usuario creado");
