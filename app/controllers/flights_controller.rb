@@ -52,40 +52,15 @@ class FlightsController < ApplicationController
  def user_new
   p"<" * 50
   p "USER_NEW"
-  p @user = User.create!(name: params[:user][:name], email: params[:user][:email])
-  p @user_booking = UserBooking.create!(user_id: @user.id, booking_id: Booking.last.id)
-   params
+   @user = User.create!(name: params[:user][:name], email: params[:user][:email])
+   @user_booking = UserBooking.create!(user_id: @user.id, booking_id: Booking.last.id)
+   @booking_users =  Booking.last.users
+
+  # p params
   p"<" * 50
  end
 
-  # def create
-  #   @flights = Flight.all
-  #   origen = params[:flow][:flight_origin]
-  #   destino = params[:flow][:flight_destiny]
-  #   p "-" * 50
-  #   p @flight = Flight.where(origin: origen, destiny: destino)
-  #   p "-" * 50
-  # end
-  # def edit
-  #   @flight = Flight.find(params[:id])
-  # end
-  #
-  # def update
-  #   @flights = Flight.all
-  #   @flight = Flight.find(params[:id])
-  #
-  #   @flight.update_attributes(flight_params)
-  # end
-  #
-  # def delete
-  #   @flight = Flight.find(params[:flight_id])
-  # end
-  #
-  # def destroy
-  #   @flights = Flight.all
-  #   @flight = Flight.find(params[:id])
-  #   @flight.destroy
-  # end
+
 
   private
     def flight_params

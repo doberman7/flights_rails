@@ -1,0 +1,25 @@
+  <!-- <p>users_in_booking</p> -->
+  <div class="container">
+    <br>
+    Usuarios agregados al Bookig <%= @booking_users.count %><br>
+
+    <%@booking_users.each do |user| %>
+
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <td>&nbsp;Nombre</td>
+              <td>&nbsp;Email</td>
+            </tr>
+          </thead>
+          <tbody >
+            <td><%=user.id%><br></td>
+            <td><%=user.name%><br></td>
+            <td><%=user.email%><br></td>
+          </tbody>
+        </table>
+
+    <%end%>
+
+  </div>

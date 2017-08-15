@@ -40,3 +40,6 @@ UserBooking.create!(user_id: paco.id, booking_id: reservacion_siberia.id)
 
 #Flight.first.bookings.find(2).users.name
 #=> del primer vuelo, la segunda reservacion, de los usarios ver nombre
+
+#Booking.last.users.count
+#=> Despues de agregar usuarios al boooking mostrar, cuantos usuarios tiene un booking a tráves de UserBooking

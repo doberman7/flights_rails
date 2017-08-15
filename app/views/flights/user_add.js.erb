@@ -1,5 +1,8 @@
 console.log("user_add.js");
+// get the contente of the span and asign it to tha var $seats
+//cabe mencionar que este contenido es un numero que es alterado por user_new.js.erb
 $seats = $("#seats").html();
+// si los asientos son distintos de cero
 if ($seats != 0) {
   $("#user-modal").html("<%= escape_javascript(render 'sub_form_user_new') %>")
   $("#user-modal").modal("show")

@@ -1,26 +1,45 @@
 console.log("user_new.js.erb");
+//traer el numero de @seats_selected en la vista select_fly
 $seats = $("#seats").html();
-$("#seats").html($seats);
+
+//BORRAR DESPUES DE LAS PRUEBAS, SI NO SE NECESITA
+//$("#seats").html($seats);
+
+//funcion para traer alterar @seats_selected, pluralizar, limpiar inputs de formulario
 function modal() {
+  //SI el id del span "#seats" es mayor a uno
   if ($seats > 1) {
-    //console.log("IF TRUE");
+    //resutarle uno
     $seats = $seats - 1
+    //singularisacion en caso de que sólo falte por agregar un usuario
     if ($seats == 1) {
       $("#por-asingar").html("<p>Quedan por  agregar: "+ $seats +" usuario </p>")
+
     }else {
+      // pluralizacion en caso de que falte mas de un usuario por agregar
       $("#por-asingar").html("<p>Quedan por  agregar: "+ $seats +" usarios </p>")
     };
+    // set the contente of the span with the new value of seats and asign it to tha var $seats
     $seats = $("#seats").html($seats);
+    //resetear los inputs del formulario
     $("#new_user")[0].reset();
-    alert("Objetos usuario creado");
+
+    //DESCOMENTAR AL FINAL
+    //alert("Objetos usuario creado");
 
     //console.log($seats.html());
+  // cuando %seats sea igual 1
   }else {
+    //restar uno
     $seats = $seats - 1
+    // set the contente of the span with the new value of seats and asign it to tha var $seats
     $seats = $("#seats").html($seats);
-    //console.log("else");
-    //console.log($seats);
-    alert("Ultimo objeto usuario creado");
+    //en vista select_fly, en div #users, se renderea vista parcial "users_in_booking"
+    $('#users').html('<%= j render("users_in_booking")  %>');
+    //DESCOMENTAR ALERT
+    //alert("Ultimo objeto usuario creado");
+
+    //cerrar vista modal para agregar users
     $("#user-modal").modal('toggle');
     //id="user-modal" class="modal fade"
   }
