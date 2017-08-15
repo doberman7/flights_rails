@@ -1,7 +1,9 @@
 <h2>Vuelo seleccionado</h2>
-<div id="seats">
+<!-- ESTE SPAN ES UN NUMERO IMPORTANTE, NO MODIFICAR, NOA AGREGAR NADA DENTRO -->
+<span id="seats">
     <%=@seats_selected%>
-</div>
+</span> Asientos por asignar
+<%=@booking%>
 
 <%if @flight_seleceted %>
   <table class="table table-bordered table-striped">

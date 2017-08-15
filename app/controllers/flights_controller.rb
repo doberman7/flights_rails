@@ -35,9 +35,10 @@ class FlightsController < ApplicationController
   def select_fly
     p "." * 50
     p "SELECT FLY"
-    p @seats_selected = params[:seats_selected]
-     @flight_seleceted = Flight.find_by(id: params[:flight_id])
+    @seats_selected = params[:seats_selected]
+    @flight_seleceted = Flight.find_by(id: params[:flight_id])
 
+    @booking = Booking.new( flight_id: @flight_seleceted.id)
     p "." * 50
   end
 
@@ -50,14 +51,12 @@ class FlightsController < ApplicationController
   end
 
  def user_new
-  p"<" * 50  
+  p"<" * 50
   p "USER_NEW"
   p @user = User.new(name: params[:user][:name], email: params[:user][:email])
   p params
   p"-" * 50
  end
-
-
 
   # def create
   #   @flights = Flight.all
