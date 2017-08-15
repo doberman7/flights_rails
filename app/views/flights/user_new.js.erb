@@ -1,17 +1,20 @@
+console.log("user_new.js.erb");
 $seats = $("#seats").html();
 $("#seats").html($seats);
 function modal() {
   if ($seats > 1) {
-    console.log("IF TRUE");
+    //console.log("IF TRUE");
     $seats = $seats - 1
     $seats = $("#seats").html($seats);
     $("#new_user")[0].reset();
-    console.log($seats.html());
+    alert("Objetos usuario creado");
+    //console.log($seats.html());
   }else {
     $seats = $seats - 1
     $seats = $("#seats").html($seats);
-    console.log("else");
-    console.log($seats);
+    //console.log("else");
+    //console.log($seats);
+    alert("Ultimo objeto usuario creado");
     $("#user-modal").modal('toggle');
     //id="user-modal" class="modal fade"
   }

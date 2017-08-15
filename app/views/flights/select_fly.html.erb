@@ -3,7 +3,8 @@
 <span id="seats">
     <%=@seats_selected%>
 </span> Asientos por asignar
-<%=@booking%>
+<br>
+Boking id: <%=@booking.id%>
 
 <%if @flight_seleceted %>
   <table class="table table-bordered table-striped">
@@ -33,3 +34,6 @@
 <%= link_to "Return to seleccion", "/", class: "btn", data: {dismiss: "modal"} %>
 
 <div id="user-modal" class="modal fade"</div>
+<div class="users">
+
+</div>
