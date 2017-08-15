@@ -1,3 +1,8 @@
 // Place all the styles related to the Flights controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// el boton de pagar en la vista "select_fly"esta inicialmente oculto
+#payment{
+  display: none;
+}

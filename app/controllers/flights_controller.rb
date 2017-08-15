@@ -55,11 +55,17 @@ class FlightsController < ApplicationController
    @user = User.create!(name: params[:user][:name], email: params[:user][:email])
    @user_booking = UserBooking.create!(user_id: @user.id, booking_id: Booking.last.id)
    @booking_users =  Booking.last.users
-
   # p params
   p"<" * 50
  end
 
+ def pay
+   p"<" * 50
+   p "PAY"
+   p params[:payment] = 7
+   p params
+   p"<" * 50
+ end
 
 
   private
