@@ -31,33 +31,33 @@ class FlightsController < ApplicationController
     end
     p "´" * 50
   end
+
   def select_fly
     p "." * 50
     p "SELECT FLY"
-    p params
+    p @seats_selected = params[:seats_selected]
      @flight_seleceted = Flight.find_by(id: params[:flight_id])
+
     p "." * 50
   end
 
   def user_add
+    p "-" * 50
     p "USER_ADD"
+    p params
     @user = User.new
+    p "-" * 50
   end
 
- def user_create
-  p"-" * 50
-  p "USER_CREATE"
-  p @user = User.create!(name: params[:user][:name], email: params[:user][:email])
+ def user_new
+  p"<" * 50  
+  p "USER_NEW"
+  p @user = User.new(name: params[:user][:name], email: params[:user][:email])
+  p params
   p"-" * 50
  end
 
-  def passengers
-    p "°" * 50
-    p "PAssENGERS"
-    p params
-    @user = User.new
-    p "°" * 50
-  end
+
 
   # def create
   #   @flights = Flight.all

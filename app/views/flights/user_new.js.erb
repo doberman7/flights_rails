@@ -1,8 +1,21 @@
-
-//COMO VENTANA MODEAL
-$("#user-modal").html("<%= escape_javascript(render 'sub_form_user_new') %>")
-$("#user-modal").modal("show")
-
+$seats = $("#seats").html();
+function modal() {
+  if ($seats >= 1) {
+    console.log("IF TRUE");
+    $("#user-modal").html("<%= escape_javascript(render 'sub_form_user_new') %>")
+    
+    $seats = $seats - 1
+    $seats = $("#seats").html($seats);
+    console.log($seats.html());
+  }else {
+    console.log("else");
+    console.log($seats);
+    $("#user-modal").modal('toggle');
+    //id="user-modal" class="modal fade"
+  }
+}
+modal()
+console.log("--------------");
 
 //PARA ESCONDER EL FORMULARIO
 // $("form").click(function() {

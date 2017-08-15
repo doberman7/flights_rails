@@ -1,4 +1,7 @@
 <h2>Vuelo seleccionado</h2>
+<div id="seats">
+    <%=@seats_selected%>
+</div>
 
 <%if @flight_seleceted %>
   <table class="table table-bordered table-striped">
@@ -23,6 +26,8 @@
       </tbody>
   </table>
 <%end%>
-<%= link_to "Add users", user_add_path, remote: true, class: "btn btn-primary" %>
+
+<%= link_to "Add users", user_add_path(:flight_id => @flight_seleceted.id,:seats_selected => @seats_selected),:method => :post ,remote: true, class: "btn btn-primary" %>
 <%= link_to "Return to seleccion", "/", class: "btn", data: {dismiss: "modal"} %>
-<div id="user-modal" class="modal fade"></div>
+
+<div id="user-modal" class="modal fade"</div>
