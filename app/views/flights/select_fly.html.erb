@@ -34,10 +34,12 @@
   </table>
   <%end%>
 
-  <%= link_to "Add users", user_add_path,:method => :post ,remote: true, class: "btn btn-primary" %>
+  <%= link_to "Add users", user_add_path,:method => :post ,remote: true, class: "btn btn-primary", id: "add-ussers-button" %>
   <%= link_to "Return to seleccion", "/", class: "btn", data: {dismiss: "modal"} %>
   <span id="payment">
-    <%= link_to "Pay", pay_path("#id"),:method => :post ,remote: true, class: "btn btn-danger" %>
+    <!-- asigarn el total a pagar a una var -->
+    <%total_to_pay = @seats_selected.to_i * @flight_seleceted.cost%>
+    <%= link_to "Pay amount of $#{total_to_pay}", pay_path("#id"),:method => :post ,remote: true, class: "btn btn-danger" %>
   </span>
   <!-- en este div aparece la tabla con los usuario agregados, NO BORRAR -->
   <div id="users">
