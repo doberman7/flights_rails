@@ -27,7 +27,7 @@
   </table>
 <%end%>
 
-<%= link_to "Add users", user_add_path(:flight_id => @flight_seleceted.id,:seats_selected => @seats_selected),:method => :post ,remote: true, class: "btn btn-primary" %>
+<%= link_to "Add users", user_add_path,:method => :post ,remote: true, class: "btn btn-primary" %>
 <%= link_to "Return to seleccion", "/", class: "btn", data: {dismiss: "modal"} %>
 
 <div id="user-modal" class="modal fade"</div>

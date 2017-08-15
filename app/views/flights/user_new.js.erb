@@ -1,13 +1,15 @@
 $seats = $("#seats").html();
+$("#seats").html($seats);
 function modal() {
-  if ($seats >= 1) {
+  if ($seats > 1) {
     console.log("IF TRUE");
-    $("#user-modal").html("<%= escape_javascript(render 'sub_form_user_new') %>")
-    
     $seats = $seats - 1
     $seats = $("#seats").html($seats);
+    $("#new_user")[0].reset();
     console.log($seats.html());
   }else {
+    $seats = $seats - 1
+    $seats = $("#seats").html($seats);
     console.log("else");
     console.log($seats);
     $("#user-modal").modal('toggle');

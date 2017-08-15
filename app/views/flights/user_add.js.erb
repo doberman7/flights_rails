@@ -1,3 +1,6 @@
-$("#user-modal").html("<%= escape_javascript(render 'sub_form_user_new') %>")
-$("#user-modal").modal("show")
 console.log("user_add.js");
+$seats = $("#seats").html();
+if ($seats != 0) {
+  $("#user-modal").html("<%= escape_javascript(render 'sub_form_user_new') %>")
+  $("#user-modal").modal("show")
+}
