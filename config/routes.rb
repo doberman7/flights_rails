@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   post "/user/add", to: 'flights#user_add' , as: 'user_add'
   post "/pay", to: 'flights#pay' , as: 'pay'
 
-  post "/user/pay", to: 'flights#user_admin' 
+  post "/user_admin", to: 'flights#user_admin', as: 'user_admin'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

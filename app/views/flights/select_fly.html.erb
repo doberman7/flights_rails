@@ -9,29 +9,29 @@
   Boking id: <%=@booking.id%>
 
   <%if @flight_seleceted %>
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th>ID de vuelo</th>
-        <th>Asientos disponibles</th>
-        <th>&nbsp;Costo por Boleto</th>
-        <td>&nbsp;Destiny</td>
-        <td>&nbsp;Origin</td>
-        <td>&nbsp;Depart</td>
-        <td>&nbsp;Hour</td>
-      </tr>
-    </thead>
-    <tbody >
-      <td><%=@flight_seleceted.id%></td>
-      <td><%=@flight_seleceted.total_seats%></td>
-      <td>$<%=@flight_seleceted.cost%></td>
-      <td><%=@flight_seleceted.destiny%></td>
-      <td><%=@flight_seleceted.origin%></td>
-      <td><%="#{@flight_seleceted.depart.day} of #{@flight_seleceted.depart.strftime('%B')} of #{@flight_seleceted.depart.year}"%></td>
-      <td><%="#{@flight_seleceted.depart.hour}:#{@flight_seleceted.depart.min}"%></td>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>ID de vuelo</th>
+          <th>Asientos disponibles</th>
+          <th>&nbsp;Costo por Boleto</th>
+          <td>&nbsp;Destiny</td>
+          <td>&nbsp;Origin</td>
+          <td>&nbsp;Depart</td>
+          <td>&nbsp;Hour</td>
+        </tr>
+      </thead>
+      <tbody >
+        <td><%=@flight_seleceted.id%></td>
+        <td><%=@flight_seleceted.total_seats%></td>
+        <td>$<%=@flight_seleceted.cost%></td>
+        <td><%=@flight_seleceted.destiny%></td>
+        <td><%=@flight_seleceted.origin%></td>
+        <td><%="#{@flight_seleceted.depart.day} of #{@flight_seleceted.depart.strftime('%B')} of #{@flight_seleceted.depart.year}"%></td>
+        <td><%="#{@flight_seleceted.depart.hour}:#{@flight_seleceted.depart.min}"%></td>
 
-    </tbody>
-  </table>
+      </tbody>
+    </table>
   <%end%>
 
   <%= link_to "Add users", user_add_path,:method => :post ,remote: true, class: "btn btn-primary", id: "add-ussers-button" %>

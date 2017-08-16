@@ -1,0 +1,28 @@
+<div class="container">
+  <h1>Tu ticket de reservacion es</h1>
+  <%=$seats%>boletos <br>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>ID de vuelo</th>
+
+        <th>&nbsp;Costo por Boleto</th>
+        <td>&nbsp;Destiny</td>
+        <td>&nbsp;Origin</td>
+        <td>&nbsp;Depart</td>
+        <td>&nbsp;Hour</td>
+      </tr>
+    </thead>
+    <tbody >
+      <td><%=$flight.id%></td>
+
+      <td>$<%=$flight.cost%></td>
+      <td><%=$flight.destiny%></td>
+      <td><%=$flight.origin%></td>
+      <td><%="#{$flight.depart.day} of #{$flight.depart.strftime('%B')} of #{$flight.depart.year}"%></td>
+      <td><%="#{$flight.depart.hour}:#{$flight.depart.min}"%></td>
+
+    </tbody>
+  </table>
+
+</div>

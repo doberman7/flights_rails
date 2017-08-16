@@ -1,9 +1,43 @@
 <p>PAY</p>
+
 <div class="modal-dialog">
   <div class="modal-content">
-    <%=form_for user_pay_path, remote: true do |f|  %>
+
+    <div class="container">
+      <h1>La informacion de tu compra es</h1>
+      Boletos: <%=$seats%><br>
+      Por un total de: <%=$seats*$flight.cost%><br>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>ID de vuelo</th>
+
+            <th>&nbsp;Costo por Boleto</th>
+            <td>&nbsp;Destiny</td>
+            <td>&nbsp;Origin</td>
+            <td>&nbsp;Depart</td>
+            <td>&nbsp;Hour</td>
+          </tr>
+        </thead>
+        <tbody >
+          <td><%=$flight.id%></td>
+
+          <td>$<%=$flight.cost%></td>
+          <td><%=$flight.destiny%></td>
+          <td><%=$flight.origin%></td>
+          <td><%="#{$flight.depart.day} of #{$flight.depart.strftime('%B')} of #{$flight.depart.year}"%></td>
+          <td><%="#{$flight.depart.hour}:#{$flight.depart.min}"%></td>
+
+        </tbody>
+      </table>
+
+    </div>
+
+
+
+    <%=form_for user_admin_path do |f|  %>
       <div class="modal-body">
-        <p>Ingresa datos de usuario</p>
+        <p>Ingresa datos de usuario de compra</p>
 
         <span id="por-asingar">  </span>
 
