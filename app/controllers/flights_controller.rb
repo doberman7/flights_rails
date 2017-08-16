@@ -63,8 +63,8 @@ class FlightsController < ApplicationController
 
  def pay
    p"<" * 50
+   p "PAY"
    @user_admin = User.new
-
    p $seats
    p $flight
    p"<" * 50
