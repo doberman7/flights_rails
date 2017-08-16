@@ -37,6 +37,8 @@ class FlightsController < ApplicationController
     p "SELECT FLY"
     @seats_selected = params[:seats_selected]
     @flight_seleceted = Flight.find_by(id: params[:flight_id])
+    $seats = @seats_selected.to_i
+    $flight =  @flight_seleceted
     @booking = Booking.create!( flight_id: @flight_seleceted.id)
     p "." * 50
   end
@@ -61,9 +63,10 @@ class FlightsController < ApplicationController
 
  def pay
    p"<" * 50
-   p "PAY"
-   p params[:payment] = 7
-   p params
+   @user_admin = User.new
+
+   p $seats
+   p $flight
    p"<" * 50
  end
 

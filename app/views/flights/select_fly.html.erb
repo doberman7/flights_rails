@@ -14,7 +14,7 @@
       <tr>
         <th>ID de vuelo</th>
         <th>Asientos disponibles</th>
-        <th>&nbsp;Costo</th>
+        <th>&nbsp;Costo por Boleto</th>
         <td>&nbsp;Destiny</td>
         <td>&nbsp;Origin</td>
         <td>&nbsp;Depart</td>
@@ -39,12 +39,12 @@
   <span id="payment">
     <!-- asigarn el total a pagar a una var -->
     <%total_to_pay = @seats_selected.to_i * @flight_seleceted.cost%>
-    <%= link_to "Pay amount of $#{total_to_pay}", pay_path("#id"),:method => :post ,remote: true, class: "btn btn-danger" %>
+    <%= link_to "Pay amount of $#{total_to_pay}", pay_path , :method => :post , remote: true, class: "btn btn-danger" %>
   </span>
   <!-- en este div aparece la tabla con los usuario agregados, NO BORRAR -->
   <div id="users">
 
   </div>
   <div id="user-modal" class="modal fade"> </div>
-
+  <div id="pay-modal" class="modal fade"> </div>
 </div>
