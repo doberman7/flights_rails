@@ -61,6 +61,7 @@ class FlightsController < ApplicationController
     p "User admin"
      @user_admin = User.create!(name: params[:user][:name], email: params[:user][:email], admin: true)
      @passengers =  Booking.last.users
+     Flight.find($flight.id).update(total_seats: ($flight.total_seats-$seats))
    else
      p "User passenger"
      @user = User.create!(name: params[:user][:name], email: params[:user][:email])
