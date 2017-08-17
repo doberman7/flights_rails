@@ -1,16 +1,17 @@
+<h1>Ticket de pago</h1>
 <div class="container">
-  <h2>Tu ticket de reservacion es</h2>
-
+  <h3>Nombre: <%=@user_admin.name %> </h3>
+  <h3>Correo: <%=@user_admin.email %></h3>
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
         <th>ID de vuelo</th>
-
         <th>&nbsp;Costo por Boleto</th>
         <td>&nbsp;Destiny</td>
         <td>&nbsp;Origin</td>
         <td>&nbsp;Depart</td>
         <td>&nbsp;Hour</td>
+        <td>&nbsp;Passengers</td>
       </tr>
     </thead>
     <tbody >
@@ -21,8 +22,14 @@
       <td><%=$flight.origin%></td>
       <td><%="#{$flight.depart.day} of #{$flight.depart.strftime('%B')} of #{$flight.depart.year}"%></td>
       <td><%="#{$flight.depart.hour}:#{$flight.depart.min}"%></td>
+      <td>
+        <%@passengers.each_with_index do |passenger, index|  %>
+          <p><%=index + 1%>) <%=passenger.name%></p>
+          <p>Correo <%=passenger.email%></p>
+        <%end%>
 
+      </td>
     </tbody>
   </table>
-
+    <%= link_to "Return to seleccion de vuelos", "/", class: "btn", data: {dismiss: "modal"} %>
 </div>

@@ -39,7 +39,8 @@ class FlightsController < ApplicationController
     @flight_seleceted = Flight.find_by(id: params[:flight_id])
     $seats = @seats_selected.to_i
     $flight =  @flight_seleceted
-    @booking = Booking.create!( flight_id: @flight_seleceted.id)
+    @booking = Booking.create!( flight_id: @flight_seleceted.id, total_cost: ($seats * $flight.cost))
+    $booking = @booking
     p "." * 50
   end
 
@@ -54,23 +55,28 @@ class FlightsController < ApplicationController
  def user_new
   p"<" * 50
   p "USER_NEW"
-   @user = User.create!(name: params[:user][:name], email: params[:user][:email])
-   @user_booking = UserBooking.create!(user_id: @user.id, booking_id: Booking.last.id)
-   @booking_users =  Booking.last.users
-  # p params
+
+  # si en los parametros existe un "authenticity_token", significa que el boton "Cagar pago a este usuario" ha sido clickeado
+  if params.has_key?(:authenticity_token)
+    p "User admin"
+     @user_admin = User.create!(name: params[:user][:name], email: params[:user][:email], admin: true)
+     @passengers =  Booking.last.users
+   else
+     p "User passenger"
+     @user = User.create!(name: params[:user][:name], email: params[:user][:email])
+     @user_booking = UserBooking.create!(user_id: @user.id, booking_id: $booking.id)
+     @booking_users =  Booking.last.users
+  end
+
   p"<" * 50
  end
 
  def pay
   p"<" * 50
   p "PAY"
-  # si en los parametros existe un "authenticity_token", significa que el boton "Cagar pago a este usuario" ha sido clickeado
-  if params[:authenticity_token] != nil
-    p "usuario pavador"    
-  end
-  #  @user_admin = User.create!(name: params[:user][:name], email: params[:user][:email], admin: true)
-  #  @booking_admin = Booking.create!( flight_id: @user_admin.id)
-  #  @user_booking_admin = UserBooking.create!(user_id: @user_admin.id, booking_id: @booking_admin)
+  @user_admin = User.new
+  p params
+  #=> <ActionController::Parameters {"controller"=>"flights", "action"=>"pay"} permitted: false>
    p"<" * 50
  end
 
