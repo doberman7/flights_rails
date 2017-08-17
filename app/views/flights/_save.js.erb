@@ -3,7 +3,7 @@ $("ul.errors").html("")
 <% if @user.errors.any? %>
   <% @user.errors.full_messages.each do |message| %>
     $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
-    console.log("errores");
+
   <% end %>
 <% else %>
     alert("Usuario salvado");

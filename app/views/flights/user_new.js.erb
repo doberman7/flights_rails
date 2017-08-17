@@ -2,53 +2,73 @@ console.log("user_new.js.erb");
 //traer el numero de @seats_selected en la vista select_fly
 $seats = $("#seats").html();
 
-//BORRAR DESPUES DE LAS PRUEBAS, SI NO SE NECESITA
-//$("#seats").html($seats);
-
 //funcion para traer alterar @seats_selected, pluralizar, limpiar inputs de formulario
 function modal() {
-  //SI el id del span "#seats" es mayor a uno
-  if ($seats > 1) {
-    //resutarle uno
-    $seats = $seats - 1
-    //singularisacion en caso de que sólo falte por agregar un usuario
-    if ($seats == 1) {
-      $("#por-asingar").html("<p>Quedan por  agregar: "+ $seats +" usuario </p>")
+  // limpiar el underline list
+  $("ul.errors").html("")
+  // si emergue un error en las validaciones
+  <% if @user.errors.any? %>
+  // iterar en los errores
+    <% @user.errors.full_messages.each do |message| %>
+      //  anexar un list item con el error en cuestion
+      $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+      //resetear los inputs del formulario
+    <% end %>
 
-    }else {
-      // pluralizacion en caso de que falte mas de un usuario por agregar
-      $("#por-asingar").html("<p>Quedan por  agregar: "+ $seats +" usarios </p>")
-    };
-    // set the contente of the span with the new value of seats and asign it to tha var $seats
-    $seats = $("#seats").html($seats);
-    //resetear los inputs del formulario
-    $("#new_user")[0].reset();
+  // en caso de no haber errores
+  <% else %>
 
-    //DESCOMENTAR AL FINAL
-    //alert("Objetos usuario creado");
+      //SI el id del span "#seats" es mayor a uno
+          if ($seats > 1) {
+            //resutarle uno
+            $seats = $seats - 1
+            //singularisacion en caso de que sólo falte por agregar un usuario
+            if ($seats == 1) {
+              $("#por-asingar").html("<p>Quedan por  agregar: "+ $seats +" usuario </p>")
 
-    //console.log($seats.html());
-  // cuando %seats sea igual 1
-  }else {
-    //restar uno
-    $seats = $seats - 1
-    // set the contente of the span with the new value of seats and asign it to tha var $seats
-    $seats = $("#seats").html($seats);
-    //en vista select_fly, en div #users, se renderea vista parcial "users_in_booking"
-    $('#users').html('<%= j render("users_in_booking")  %>');
-    //DESCOMENTAR ALERT
-    //alert("Ultimo objeto usuario creado");
-    //aparecer el boton de pagar
-    $('#payment').toggle();
-    //ocultar boton para añadir users
-    $('#add-ussers-button').hide();
+            }else {
+              // pluralizacion en caso de que falte mas de un usuario por agregar
+              $("#por-asingar").html("<p>Quedan por  agregar: "+ $seats +" usarios </p>")
+            };
+            // set the contente of the span with the new value of seats and asign it to tha var $seats
+            $seats = $("#seats").html($seats);
+            //resetear los inputs del formulario
+            $("#new_user")[0].reset();
 
-    //cerrar vista modal para agregar users
-    $("#user-modal").modal('toggle');
-    //id="user-modal" class="modal fade"
-  }
+            //DESCOMENTAR AL FINAL
+            //alert("Objetos usuario creado");
+
+
+            // cuando %seats sea igual 1
+          }else {
+            //restar uno
+            $seats = $seats - 1
+            // set the contente of the span with the new value of seats and asign it to tha var $seats
+            $seats = $("#seats").html($seats);
+            //en vista select_fly, en div #users, se renderea vista parcial "users_in_booking"
+            $('#users').html('<%= j render("users_in_booking")  %>');
+
+            //DESCOMENTAR ALERT
+            //alert("Ultimo objeto usuario creado");
+            //aparecer el boton de pagar
+            $('#payment').toggle();
+            //ocultar boton para añadir users
+            $('#add-ussers-button').hide();
+
+            //cerrar vista modal para agregar users
+            $("#user-modal").modal('toggle');
+            //id="user-modal" class="modal fade"
+          }
+
+
+  <% end %>
+
+
 }
-modal()
+
+
+modal();
+
 console.log("--------------");
 
 //PARA ESCONDER EL FORMULARIO

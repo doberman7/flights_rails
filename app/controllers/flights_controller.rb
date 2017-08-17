@@ -59,14 +59,24 @@ class FlightsController < ApplicationController
   # si en los parametros existe un "authenticity_token", significa que el boton "Cagar pago a este usuario" ha sido clickeado
   if params.has_key?(:authenticity_token)
     p "User admin"
-     @user_admin = User.create!(name: params[:user][:name], email: params[:user][:email], admin: true)
-     @passengers =  Booking.last.users
-     Flight.find($flight.id).update(total_seats: ($flight.total_seats-$seats))
+     @user_admin = User.new(name: params[:user][:name], email: params[:user][:email], admin: true)
+     if @user_admin.valid?
+       @user_admin.save
+       @passengers =  Booking.last.users
+       Flight.find($flight.id).update(total_seats: ($flight.total_seats-$seats))
+       @flight = $flight
+     else
+       p "no"
+       pay
+     end
    else
      p "User passenger"
-     @user = User.create!(name: params[:user][:name], email: params[:user][:email])
-     @user_booking = UserBooking.create!(user_id: @user.id, booking_id: $booking.id)
-     @booking_users =  Booking.last.users
+     @user = User.new(name: params[:user][:name], email: params[:user][:email])
+     if @user.valid?
+       @user.save
+       @user_booking = UserBooking.create!(user_id: @user.id, booking_id: $booking.id)
+       @booking_users =  Booking.last.users
+     end
   end
 
   p"<" * 50
@@ -76,7 +86,9 @@ class FlightsController < ApplicationController
   p"<" * 50
   p "PAY"
   @user_admin = User.new
-  p params
+  @flight = $flight
+  @seats = $seats
+  # p params
   #=> <ActionController::Parameters {"controller"=>"flights", "action"=>"pay"} permitted: false>
    p"<" * 50
  end

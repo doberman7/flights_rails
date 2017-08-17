@@ -15,13 +15,13 @@
       </tr>
     </thead>
     <tbody >
-      <td><%=$flight.id%></td>
+      <td><%=@flight.id%></td>
 
-      <td>$<%=$flight.cost%></td>
-      <td><%=$flight.destiny%></td>
-      <td><%=$flight.origin%></td>
-      <td><%="#{$flight.depart.day} of #{$flight.depart.strftime('%B')} of #{$flight.depart.year}"%></td>
-      <td><%="#{$flight.depart.hour}:#{$flight.depart.min}"%></td>
+      <td>$<%=@flight.cost%></td>
+      <td><%=@flight.destiny%></td>
+      <td><%=@flight.origin%></td>
+      <td><%="#{@flight.depart.day} of #{@flight.depart.strftime('%B')} of #{@flight.depart.year}"%></td>
+      <td><%="#{@flight.depart.hour}:#{@flight.depart.min}"%></td>
       <td>
         <%@passengers.each_with_index do |passenger, index|  %>
           <p><%=index + 1%>) <%=passenger.name%></p>

@@ -20,14 +20,14 @@
                     </tr>
                   </thead>
                   <tbody >
-                    <td><%=$flight.id%></td>
-                    <td><%=$seats*$flight.cost%></td>
-                    <td><%=$seats%></td>
-                    <td>$<%=$flight.cost%></td>
-                    <td><%=$flight.destiny%></td>
-                    <td><%=$flight.origin%></td>
-                    <td><%="#{$flight.depart.day} of #{$flight.depart.strftime('%B')} of #{$flight.depart.year}"%></td>
-                    <td><%="#{$flight.depart.hour}:#{$flight.depart.min}"%></td>
+                    <td><%=@flight.id%></td>
+                    <td><%=@seats*@flight.cost%></td>
+                    <td><%=@seats%></td>
+                    <td>$<%=@flight.cost%></td>
+                    <td><%=@flight.destiny%></td>
+                    <td><%=@flight.origin%></td>
+                    <td><%="#{@flight.depart.day} of #{@flight.depart.strftime('%B')} of #{@flight.depart.year}"%></td>
+                    <td><%="#{@flight.depart.hour}:#{@flight.depart.min}"%></td>
 
                   </tbody>
                 </table>
