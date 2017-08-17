@@ -64,8 +64,10 @@ class FlightsController < ApplicationController
  def pay
   p"<" * 50
   p "PAY"
-  p params
-
+  # si en los parametros existe un "authenticity_token", significa que el boton "Cagar pago a este usuario" ha sido clickeado
+  if params[:authenticity_token] != nil
+    p "usuario pavador"    
+  end
   #  @user_admin = User.create!(name: params[:user][:name], email: params[:user][:email], admin: true)
   #  @booking_admin = Booking.create!( flight_id: @user_admin.id)
   #  @user_booking_admin = UserBooking.create!(user_id: @user_admin.id, booking_id: @booking_admin)

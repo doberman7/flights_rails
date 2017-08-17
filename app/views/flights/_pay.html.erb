@@ -1,41 +1,41 @@
-<p>PAY</p>
+<p>_pay</p>
 
 <div class="modal-dialog">
   <div class="modal-content">
 
-    <div class="container">
-      <h1>La informacion de tu compra es</h1>
-      Boletos: <%=$seats%><br>
-      Por un total de: <%=$seats*$flight.cost%><br>
-      <table class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th>ID de vuelo</th>
+      <h2>La informacion de tu compra es</h2>
 
-            <th>&nbsp;Costo por Boleto</th>
-            <td>&nbsp;Destiny</td>
-            <td>&nbsp;Origin</td>
-            <td>&nbsp;Depart</td>
-            <td>&nbsp;Hour</td>
-          </tr>
-        </thead>
-        <tbody >
-          <td><%=$flight.id%></td>
+    
+                <table class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th>ID de vuelo</th>
+                      <th>&nbsp;Costo total de la compra:</th>
+                      <th>Número de Boletos: </th>
+                      <th>&nbsp;Costo por Boleto</th>
+                      <td>&nbsp;Destiny</td>
+                      <td>&nbsp;Origin</td>
+                      <td>&nbsp;Depart</td>
+                      <td>&nbsp;Hour</td>
+                    </tr>
+                  </thead>
+                  <tbody >
+                    <td><%=$flight.id%></td>
+                    <td><%=$seats*$flight.cost%></td>
+                    <td><%=$seats%></td>
+                    <td>$<%=$flight.cost%></td>
+                    <td><%=$flight.destiny%></td>
+                    <td><%=$flight.origin%></td>
+                    <td><%="#{$flight.depart.day} of #{$flight.depart.strftime('%B')} of #{$flight.depart.year}"%></td>
+                    <td><%="#{$flight.depart.hour}:#{$flight.depart.min}"%></td>
 
-          <td>$<%=$flight.cost%></td>
-          <td><%=$flight.destiny%></td>
-          <td><%=$flight.origin%></td>
-          <td><%="#{$flight.depart.day} of #{$flight.depart.strftime('%B')} of #{$flight.depart.year}"%></td>
-          <td><%="#{$flight.depart.hour}:#{$flight.depart.min}"%></td>
-
-        </tbody>
-      </table>
-
-    </div>
-
+                  </tbody>
+                </table>
 
 
-    <%=form_for user_admin_path do |f|  %>
+
+    <!-- intentamos usar para este formulario otra ruta pero siempre usaba pay_path, asi que la usamos implicitament -->
+    <%=form_for pay_path do |f|  %>
       <div class="modal-body">
         <p>Ingresa datos de usuario de compra</p>
 
@@ -53,7 +53,7 @@
           </div>
 
           <div class="modal-footer">
-            <%= f.submit "Crear user",:user_admin => @user_admin ,class: "btn btn-primary"%>
+            <%= f.submit "Cagar pago a este usuario",:user_admin => @user_admin ,class: "btn btn-primary"%>
             <%=link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"} %>
           </div>
 
