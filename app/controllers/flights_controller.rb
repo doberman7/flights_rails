@@ -61,12 +61,19 @@ class FlightsController < ApplicationController
     p "User admin"
      @user_admin = User.new(name: params[:user][:name], email: params[:user][:email], rol: "creador de reservacion")
      if @user_admin.valid?
-       @user_admin.save
+       if User.where(name: @user_admin.name).count == 0
+         p "salvo el admin"
+         @user_admin.save
+         UserBooking.create!(user_id: @user_admin.id, booking_id: $booking.id)
+       else
+         p "actualizo"
+         @user_admin = User.find_by(name: @user_admin.name)
+         @user_admin.update(rol: "passenger")
+       end
        @passengers =  Booking.last.users
        Flight.find($flight.id).update(total_seats: ($flight.total_seats-$seats))
        @flight = $flight
        @booking = $booking
-       UserBooking.create!(user_id: @user_admin.id, booking_id: $booking.id)
       #  actualmentel renderiza user_new.html.erb
      else
        p "error de validacion"

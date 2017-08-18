@@ -14,7 +14,11 @@
         <td>&nbsp;Depart</td>
         <td>&nbsp;Hour</td>
         <td>&nbsp;Passenger</td>
-        <td>&nbsp;Quién hizo la reservacion</td>
+        <%@passengers.each_with_index do |passenger, index|  %>
+            <% if passenger.rol == "creador de reservacion" %>
+                  <td>&nbsp;Quién hizo la reservacion</td>
+            <% end %>
+        <%end%>
       </tr>
     </thead>
     <tbody >
@@ -41,13 +45,19 @@
       </td>
       <td>
         <%@passengers.each_with_index do |passenger, index|  %>
-            <% if passenger.rol != "passenger" %>
+            <% if passenger.rol == "creador de reservacion" %>
+              
+                  <%@passengers.each_with_index do |passenger, index|  %>
+                  <% if passenger.rol != "passenger" %>
 
 
                   <ul>
                     <li>Name: <%=passenger.name%></li>
                     <li>Correo: <%=passenger.email%></li>
                   </ul>
+
+                  <% end %>
+                  <%end%>
 
             <% end %>
         <%end%>
