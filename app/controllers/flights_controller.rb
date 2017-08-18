@@ -90,6 +90,7 @@ class FlightsController < ApplicationController
      if @user.valid?
        @user.save
        @user_booking = UserBooking.create!(user_id: @user.id, booking_id: $booking.id)
+       UserFlight.create!(user_id: @user.id, flight_id: $flight.id)
        @booking_users =  Booking.last.users
      end
   end
