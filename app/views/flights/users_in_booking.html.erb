@@ -1,0 +1,17 @@
+
+<%@user_admin.errors.full_messages.each do |message| %>
+   <ul>
+     <li id="error"><%=message%></li>
+   </ul>
+ <%end %>
+Boking id: <%=@booking.id%>
+<% if @booking_users %>
+  <%=render "users_in_booking.html.erb"%>
+<%end%>
+<!-- asigarn el total a pagar a una var -->
+<%= link_to "Return to seleccion", "/", class: "btn", data: {dismiss: "modal"} %>
+<%total_to_pay = @seats_selected.to_i * @flight_seleceted.cost%>
+<%= link_to "Pay amount of $#{total_to_pay}", pay_path , :method => :post , remote: true, class: "btn btn-danger" %>
+
+<div id="user-modal" class="modal fade"> </div>
+<div id="pay-modal" class="modal fade"> </div>

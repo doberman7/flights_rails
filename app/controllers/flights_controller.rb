@@ -71,8 +71,10 @@ class FlightsController < ApplicationController
         @booking = $booking
         @seats_selected = $seats
         @flight_seleceted = $flight
-        @booking_users =  Booking.last.users
-        render "select_fly"
+        @booking_users =  Booking.last.users       
+
+        render "users_in_booking.html.erb"
+
 
        #  redirect_back(fallback_location: "select_fly?flight_id=1&seats_selected=2")
        #  actualmentel renderiza user_new.html.erb y es lo que queremos avizar
