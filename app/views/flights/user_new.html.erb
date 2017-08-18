@@ -1,34 +1,58 @@
-<h1>Ticket de pago</h1>
+<h2>Excelente su reservacion ha sido realizada con exito</h2>
+<h3>los datos de su reseracion son los siguientes</h3>
 <div class="container">
-  <h3>Nombre: <%=@user_admin.name %> </h3>
-  <h3>Correo: <%=@user_admin.email %></h3>
+  <h4>Nombre: <%=@user_admin.name %> </h4>
+  <h4>Correo: <%=@user_admin.email %></h4>
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
         <th>ID de vuelo</th>
+        <th>ID de reservacion</th>
         <th>&nbsp;Costo por Boleto</th>
         <td>&nbsp;Destiny</td>
         <td>&nbsp;Origin</td>
         <td>&nbsp;Depart</td>
         <td>&nbsp;Hour</td>
-        <td>&nbsp;Passengers</td>
+        <td>&nbsp;Passenger</td>
+        <td>&nbsp;Quién hizo la reservacion</td>
       </tr>
     </thead>
     <tbody >
       <td><%=@flight.id%></td>
-
+      <td><%=@booking.id%></td>
       <td>$<%=@flight.cost%></td>
       <td><%=@flight.destiny%></td>
       <td><%=@flight.origin%></td>
       <td><%="#{@flight.depart.day} of #{@flight.depart.strftime('%B')} of #{@flight.depart.year}"%></td>
       <td><%="#{@flight.depart.hour}:#{@flight.depart.min}"%></td>
+
       <td>
         <%@passengers.each_with_index do |passenger, index|  %>
-          <p><%=index + 1%>) <%=passenger.name%></p>
-          <p>Correo <%=passenger.email%></p>
-        <%end%>
+            <% if passenger.rol == "passenger" %>
 
+                  User:<%=index + 1%>)
+                  <ul>
+                    <li>Name: <%=passenger.name%></li>
+                    <li>Correo: <%=passenger.email%></li>
+                  </ul>
+
+            <% end %>
+        <%end%>
       </td>
+      <td>
+        <%@passengers.each_with_index do |passenger, index|  %>
+            <% if passenger.rol != "passenger" %>
+
+
+                  <ul>
+                    <li>Name: <%=passenger.name%></li>
+                    <li>Correo: <%=passenger.email%></li>
+                  </ul>
+
+            <% end %>
+        <%end%>
+      </td>
+
     </tbody>
   </table>
     <%= link_to "Return to seleccion de vuelos", "/", class: "btn", data: {dismiss: "modal"} %>

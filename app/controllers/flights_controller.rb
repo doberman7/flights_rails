@@ -59,29 +59,27 @@ class FlightsController < ApplicationController
   # si en los parametros existe un "authenticity_token", significa que el boton "Cagar pago a este usuario" ha sido clickeado
   if params.has_key?(:authenticity_token)
     p "User admin"
-     @user_admin = User.new(name: params[:user][:name], email: params[:user][:email], admin: true)
+     @user_admin = User.new(name: params[:user][:name], email: params[:user][:email], rol: "creador de reservacion")
      if @user_admin.valid?
        @user_admin.save
        @passengers =  Booking.last.users
        Flight.find($flight.id).update(total_seats: ($flight.total_seats-$seats))
        @flight = $flight
+       @booking = $booking
+       UserBooking.create!(user_id: @user_admin.id, booking_id: $booking.id)
       #  actualmentel renderiza user_new.html.erb
      else
        p "error de validacion"
         @booking = $booking
         @seats_selected = $seats
         @flight_seleceted = $flight
-        @booking_users =  Booking.last.users       
+        @booking_users =  Booking.last.users
 
         render "users_in_booking.html.erb"
-
-
-       #  redirect_back(fallback_location: "select_fly?flight_id=1&seats_selected=2")
-       #  actualmentel renderiza user_new.html.erb y es lo que queremos avizar
      end
    else
      p "User passenger"
-     @user = User.new(name: params[:user][:name], email: params[:user][:email])
+     @user = User.new(name: params[:user][:name], email: params[:user][:email], rol: "passenger")
      if @user.valid?
        @user.save
        @user_booking = UserBooking.create!(user_id: @user.id, booking_id: $booking.id)
