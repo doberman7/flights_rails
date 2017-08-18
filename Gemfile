@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-#gem "input_calendar"
+gem 'valid_email'
 
 gem 'bootstrap-sass', '~> 3.3.5.1'
 

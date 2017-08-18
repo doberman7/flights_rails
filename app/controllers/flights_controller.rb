@@ -65,9 +65,17 @@ class FlightsController < ApplicationController
        @passengers =  Booking.last.users
        Flight.find($flight.id).update(total_seats: ($flight.total_seats-$seats))
        @flight = $flight
+      #  actualmentel renderiza user_new.html.erb
      else
-       p "no"
-       pay
+       p "error de validacion"
+        @booking = $booking
+        @seats_selected = $seats
+        @flight_seleceted = $flight
+        @booking_users =  Booking.last.users
+        render "select_fly"
+
+       #  redirect_back(fallback_location: "select_fly?flight_id=1&seats_selected=2")
+       #  actualmentel renderiza user_new.html.erb y es lo que queremos avizar
      end
    else
      p "User passenger"
